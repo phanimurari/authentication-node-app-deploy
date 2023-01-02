@@ -63,7 +63,8 @@ app.post("/users/", async (request, response) => {
           '${username}', 
           '${hashedPassword}')`;
     await db.run(createUserQuery);
-    response.send(`User created successfully`);
+
+    response.status(200).json({ success: true });
   } else {
     response.status(400);
     response.send("User already exists");
